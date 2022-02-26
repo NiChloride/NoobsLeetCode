@@ -30,6 +30,36 @@ def DFS(i, j, mapp, r, c):
     DFS(i, j+1, mapp, r, c)
     DFS(i+1, j, mapp, r, c)
     DFS(i, j-1, mapp, r, c)
+
+    '''BFS
+    def numIslands(self, grid: List[List[str]]) -> int:
+        q = deque()
+        
+        cnt = 0
+        
+        def AddLand(row, col):
+            if 0 <= row < len(grid) and 0 <= col < len(grid[0]) and grid[row][col] == "1":
+                q.append((row, col))
+        
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] != "1":
+                    continue
+                else:
+                    AddLand(i, j)
+                    cnt += 1
+                
+                while q:
+                    r, c = q.pop()
+                    grid[r][c] = "2"
+                    
+                    for nrow, ncol in ((-1, 0), (0, -1), (0, 1), (1, 0)):
+                        AddLand(r + nrow, c + ncol)
+        
+        return cnt
+    '''                   
+
+
     '''
     #Answer from 博哥
     def numIslands(self, grid) -> int:
